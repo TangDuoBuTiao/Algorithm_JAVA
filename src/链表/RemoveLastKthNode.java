@@ -74,7 +74,7 @@ public class RemoveLastKthNode {
             }
             DoubleNode newNext = cur.next.next;  //newNext是倒数第k个节点的后一个节点
             cur.next = newNext; //前一个节点，直接指向后一个节点 <==> 删除倒数第k个节点
-            if (newNext != null) {
+            if (newNext != null) {  //如果为空，删除的是最后一个节点，最后一个节点的后一个节点是null
                 newNext.last = cur;
             }
         }

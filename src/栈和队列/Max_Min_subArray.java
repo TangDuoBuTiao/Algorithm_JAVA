@@ -16,11 +16,11 @@ public class Max_Min_subArray {
         int res = 0;
         while (i < arr.length) {
             while (j < arr.length) {
-                while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]) {  //动态调整最小值，保持队头元素最小
-                    qmin.pollLast();
+                while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]) {  //动态调整最小值，保持qmin队头到队尾递增
+                    qmin.pollLast();  //移除队尾元素
                 }
-                qmin.addLast(j);
-                while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]) {  //动态调整最大值，保证队头元素最大
+                qmin.addLast(j);  //把更小的添加到队尾
+                while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]) {  //动态调整最大值，保证qmax队头到队尾递减
                     qmax.pollLast();
                 }
                 qmax.addLast(j);
