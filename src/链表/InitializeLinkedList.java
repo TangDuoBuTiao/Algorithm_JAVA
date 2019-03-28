@@ -35,28 +35,34 @@ public class InitializeLinkedList {
         node3.next = node4;
         node4.next = node5;
         printLinkedList(node1);
-        System.out.println(isPalindrome(node1));
+        System.out.println(isPalindrome2(node1));
     }
 
     // ***********************************************************测试代码放这里
-    public static Boolean isPalindrome(Node head) {
-        if (head == null) {
-            throw new RuntimeException("Your LinkedList is null.");
+    public static Boolean isPalindrome2(Node head) {
+        if (head == null || head.next == null) {
+            return true;
         }
 
         Stack<Node> stack = new Stack<>();
-        Node cur = head;
-        while (cur != null) {
-            stack.push(cur);
-            cur = cur.next;
+        Node curFast = head;
+        Node curSlow = head.next;
+        while (curFast.next != null && curFast.next.next != null) {
+            stack.push(curSlow);
+            curSlow = curSlow.next;
+            curFast = curFast.next.next;
         }
-
-        while (head != null) {
+        while (curSlow != null) {
+            stack.push(curSlow);
+            curSlow = curSlow.next;
+        }
+        while (!stack.isEmpty()) {
             if (head.value != stack.pop().value) {
                 return false;
             }
             head = head.next;
         }
+
         return true;
     }
 //******************************************************************测试代码
