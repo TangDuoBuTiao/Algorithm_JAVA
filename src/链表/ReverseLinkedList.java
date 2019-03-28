@@ -52,5 +52,7 @@ public class ReverseLinkedList {
             }
             return pre;
         }
+
     }
+
 }
