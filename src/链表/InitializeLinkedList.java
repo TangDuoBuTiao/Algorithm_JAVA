@@ -47,37 +47,41 @@ public class InitializeLinkedList {
 
         printLinkedList(node1);
         printLinkedList(nodeA);
-        printLinkedList(addTwoLinkedList1(node1, nodeA));
+        printLinkedList(addTwoLinkedList2(node1, nodeA));
     }
 
     // ***********************************************************测试代码放这里
-    public static Node addTwoLinkedList1(Node head1, Node head2) {
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
-        Node cur = head1;
-        while (cur != null) {
-            s1.push(cur.value);
-            cur = cur.next;
+    public static Node addTwoLinkedList2(Node head1, Node head2) {
+        //反转链表过程，pre1是head1反转后的结果，pre2是head2反转后的结果
+        Node next = null;
+        Node pre1 = null;
+        while (head1 != null) {
+            next = head1.next;
+            head1.next = pre1;
+            pre1 = head1;
+            head1 = next;
         }
-        cur = head2;
-        while (cur != null) {
-            s2.push(cur.value);
-            cur = cur.next;
+        Node pre2 = null;
+        while (head2 != null) {
+            next = head2.next;
+            head2.next = pre2;
+            pre2 = head2;
+            head2 = next;
         }
-        int ca = 0;  //进位
-        int n1 = 0;
-        int n2 = 0;
-        int n = 0;
+        //两个反转后的链表相加过程
+        int n1 = 0, n2 = 0, n = 0, ca = 0;
         Node node = null;
         Node pre = null;
-        while (!s1.isEmpty() || !s2.isEmpty()) {
-            n1 = s1.isEmpty() ? 0 : s1.pop();
-            n2 = s2.isEmpty() ? 0 : s2.pop();
+        while (pre1 != null && pre2 != null) {
+            n1 = pre1 != null ? pre1.value : 0;
+            n2 = pre2 != null ? pre2.value : 0;
             n = n1 + n2 + ca;
             pre = node;
             node = new Node(n % 10);
             node.next = pre;
             ca = n / 10;
+            pre1 = pre1 != null ? pre1.next : null;
+            pre2 = pre2 != null ? pre2.next : null;
         }
         if (ca == 1) {
             pre = node;
@@ -85,6 +89,7 @@ public class InitializeLinkedList {
             node.next = pre;
         }
         return node;
+
     }
 //******************************************************************测试代码
 }
