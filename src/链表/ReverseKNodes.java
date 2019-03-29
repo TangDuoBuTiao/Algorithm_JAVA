@@ -17,7 +17,7 @@ public class ReverseKNodes {
 
     // 方法一：使用栈结构
     public Node reverseKNodes1(Node head, int k) {
-        if (head == null || head.next == null || k < 2) {
+        if (k < 2) {
             return head;
         }
         Stack<Node> stack = new Stack<>();
