@@ -30,46 +30,57 @@ public class InitializeLinkedList {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
-        Node node4 = new Node(2);
-        Node node5 = new Node(1);
+        Node node4 = new Node(7);
+        Node node5 = new Node(9);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
 
-        Node nodeA = new Node(9);
-        Node nodeB = new Node(2);
-        Node nodeC = new Node(4);
-        Node nodeD = new Node(1);
-        Node nodeE = new Node(7);
+        Node nodeA = new Node(2);
+        Node nodeB = new Node(4);
+        Node nodeC = new Node(6);
+        Node nodeD = new Node(8);
+        Node nodeE = new Node(10);
         nodeA.next = nodeB;
         nodeB.next = nodeC;
         nodeC.next = nodeD;
         nodeD.next = nodeE;
 
         printLinkedList(node1);
-        //printLinkedList(nodeA);
-        printLinkedList(removeDesignationValue(node1, 3));
+        printLinkedList(nodeA);
+        printLinkedList(mergeTwoList(node1, nodeA));
     }
 
     // ***********************************************************测试代码放这里
-    public static Node removeDesignationValue(Node head, int num) {
-        if (head.value == num) {   //如果第一个元素删除，head后移一位
-            head = head.next;
+
+    public static Node mergeTwoList(Node head1, Node head2) {
+        if (head1 == null || head2 == null) {
+            return head1 != null ? head1 : head2;
         }
-        Node cur = head;
-        Node pre = null;
-        while (cur != null) {
-            if (cur.value != num) {
-                pre = cur;
-                cur = cur.next;
-                pre.next = cur;
+        Node cur = new Node(0);
+        Node head = cur;
+        Node cur1 = head1;
+        Node cur2 = head2;
+        while (cur1 != null && cur2 != null) {
+            if (cur1.value <= cur2.value) {
+                cur.next = cur1;
+                cur = cur1;
+                cur1 = cur1.next;
             } else {
-                pre.next = cur.next;
-                cur = cur.next;
+                cur.next = cur2;
+                cur = cur2;
+                cur2 = cur2.next;
             }
         }
-        return head;
+        if (cur1 == null) {
+            cur.next = cur2;
+        }
+        if (cur2 == null) {
+            cur.next = cur1;
+        }
+        return head.next;
     }
+
 //******************************************************************测试代码
 }
