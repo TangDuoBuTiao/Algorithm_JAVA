@@ -1,5 +1,7 @@
 package 链表;
 
+import com.sun.xml.internal.ws.api.model.MEP;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
@@ -30,8 +32,8 @@ public class InitializeLinkedList {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
-        Node node4 = new Node(7);
-        Node node5 = new Node(9);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
@@ -48,39 +50,23 @@ public class InitializeLinkedList {
         nodeD.next = nodeE;
 
         printLinkedList(node1);
-        printLinkedList(nodeA);
-        printLinkedList(mergeTwoList(node1, nodeA));
+        //printLinkedList(nodeA);
+        printLinkedList(removeLastKthNode(node1, 2));
     }
 
     // ***********************************************************测试代码放这里
 
-    public static Node mergeTwoList(Node head1, Node head2) {
-        if (head1 == null || head2 == null) {
-            return head1 != null ? head1 : head2;
+    public static Node removeLastKthNode(Node head, int k) {
+        Node cur = head;
+        while (cur != null) {
+            k--;
+            cur = cur.next;
         }
-        Node cur = new Node(0);
-        Node head = cur;
-        Node cur1 = head1;
-        Node cur2 = head2;
-        while (cur1 != null && cur2 != null) {
-            if (cur1.value <= cur2.value) {
-                cur.next = cur1;
-                cur = cur1;
-                cur1 = cur1.next;
-            } else {
-                cur.next = cur2;
-                cur = cur2;
-                cur2 = cur2.next;
-            }
+        cur = head;
+        while (k++ != 0) {
+            cur = cur.next;
         }
-        if (cur1 == null) {
-            cur.next = cur2;
-        }
-        if (cur2 == null) {
-            cur.next = cur1;
-        }
-        return head.next;
+        return cur;
     }
-
 //******************************************************************测试代码
 }

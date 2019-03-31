@@ -3,6 +3,8 @@ package 链表;
  反转单向和双向链表
  */
 
+import java.util.ArrayList;
+
 //反转单向链表
 // 解法:定义头结点的前一个节点pre,
 public class ReverseLinkedList {
