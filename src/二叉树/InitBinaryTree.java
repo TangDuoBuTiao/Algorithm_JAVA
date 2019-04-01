@@ -1,5 +1,7 @@
 package 二叉树;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class InitBinaryTree {
@@ -28,32 +30,32 @@ public class InitBinaryTree {
         node3.left = node6;
         node3.right = node7;
         InitBinaryTree f = new InitBinaryTree();
-        f.posOrderUnRecur(node1);
+        String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
+        System.out.println(f.serialByBFS(node1));
 
     }
 
     //  测试代码***************************************************
-    public void posOrderUnRecur(Node head) {
-        //只用一个栈实现
-        System.out.println("非递归实现后序遍历：");
-        if (head != null) {
-            Stack<Node> stack = new Stack<>();
-            stack.push(head);
-            Node c = null;
-            while (!stack.isEmpty()) {
-                c = stack.peek();
-                if (c.left != null && head != c.left && head != c.right) {
-                    stack.push(c.left);
-                } else if (c.right != null && head != c.right) {
-                    stack.push(c.right);
-                } else {
-                    System.out.print(stack.pop().value + " ");
-                    head = c;
-                }
+    public String serialByBFS(Node head) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(head);
+        String res = head.value + "!";
+        while (!queue.isEmpty()) {
+            head = queue.poll();
+            if (head.left != null) {
+                queue.offer(head.left);
+                res += head.left.value + "!";
+            } else {
+                res += "#!";
+            }
+            if (head.right != null) {
+                queue.offer(head.right);
+                res += head.right.value + "!";
+            } else {
+                res += "#!";
             }
         }
-
+        return res;
     }
-
     //*************************************************************
 }
