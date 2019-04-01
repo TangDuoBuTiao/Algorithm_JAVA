@@ -1,6 +1,5 @@
-package 数组;
+package 数组和矩阵;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

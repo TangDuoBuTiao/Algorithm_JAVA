@@ -1,4 +1,4 @@
-package 数组;
+package 数组和矩阵;
 
 public class 最大子数组和 {
     public static int solution(int nums[]) {

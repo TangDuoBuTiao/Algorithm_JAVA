@@ -1,4 +1,4 @@
-package 数组;
+package 数组和矩阵;
 
 public class 乘积最大子序列 {
 
