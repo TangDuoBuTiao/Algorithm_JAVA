@@ -1,39 +1,22 @@
 package 二叉树;
+/*
+"Z"字形打印二叉树
+ */
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
-public class InitBinaryTree {
-    public static class Node {
+public class PrintTreeByZigzag {
+    public class Node {
         public int value;
-        public Node left;  //左子树
-        public Node right; //右子树
+        public Node left;
+        public Node right;
 
         public Node(int data) {
             this.value = data;
         }
     }
 
-    public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
-        node1.left = node2;
-        node1.right = node3;
-        node2.left = node4;
-        node2.right = node5;
-        node3.left = node6;
-        node3.right = node7;
-        InitBinaryTree f = new InitBinaryTree();
-        String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
-        f.printTreeByZigzag(node1);
-
-    }
-
-    //  测试代码***************************************************
     public void printTreeByZigzag(Node head) {
         if (head == null) {
             return;
@@ -46,7 +29,7 @@ public class InitBinaryTree {
         dq.offerFirst(head);
         print(level++, lr);
         while (!dq.isEmpty()) {
-            if (lr) {
+            if (lr) {                           //从左到右方向：头出尾进
                 head = dq.pollFirst();
                 if (head.left != null) {
                     nLast = nLast == null ? head.left : nLast;
@@ -56,7 +39,7 @@ public class InitBinaryTree {
                     nLast = nLast == null ? head.right : nLast;
                     dq.offerLast(head.right);
                 }
-            } else {
+            } else {                          //从右到左方向：尾出头进
                 head = dq.pollLast();
                 if (head.right != null) {
                     nLast = nLast == null ? head.right : nLast;
@@ -82,5 +65,4 @@ public class InitBinaryTree {
         System.out.print("level " + level + " from ");
         System.out.print(lr ? "left to right: " : "right to left: ");
     }
-    //*************************************************************
 }
