@@ -17,35 +17,44 @@ public class InitBinaryTree {
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
-        node2.right = node5;
-        node3.left = node6;
-        node3.right = node7;
+   //     node2.right = node5;
+        node4.left = node6;
+        node4.right = node7;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
-        System.out.print(f.isSBT_UnRecur(node1));
+        System.out.print(f.isCBT(node1));
 
     }
 
     //  测试代码***************************************************
-    public boolean isSBT_UnRecur(Node head) {
-        if (head != null) {
-            int last = Integer.MIN_VALUE;
-            Stack<Node> stack = new Stack<>();
-            Node cur = head;
-            while (!stack.isEmpty() || cur != null) {
-                if (cur != null) {
-                    stack.push(cur);
-                    cur = cur.left;
-                } else {
-                    cur = stack.pop();
-                    if (cur.value <= last) {
-                        return false;
-                    }
-                    last = cur.value;
-                    cur = cur.right;
-                }
-            }
+    public boolean isCBT(Node head) {
+        if (head == null) {
             return true;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(head);
+        Node l = null;
+        Node r = null;
+        boolean leaf = false;
+
+        while (!queue.isEmpty()) {
+            head = queue.poll();
+            l = head.left;
+            r = head.right;
+
+            // leaf = true 表明有节点没有右子树，当这层再有空的孩子节点
+            if (leaf && (l != null || r != null) || (l == null && r != null)) {
+                return false;
+            }
+            if (head.left != null) {
+                queue.offer(head.left);
+            }
+            if (head.right != null) {
+                queue.offer(head.right);
+            } else {   //没有右子树，就增加了不是完全二叉树的概率
+                leaf = true;
+            }
+
         }
         return true;
     }
