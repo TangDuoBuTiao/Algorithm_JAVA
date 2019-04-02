@@ -6,16 +6,9 @@ package 二叉树;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PrintTreeByLevel {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
+import 二叉树.Node;
 
-        public Node(int data) {
-            this.value = data;
-        }
-    }
+public class PrintTreeByLevel {
 
     //使用队列，做类似于BFS的遍历。用last和nLast两个变量分别记录当前行的最后一个节点和下一行的最后一个节点
     public void printTreeByLevel(Node head) {

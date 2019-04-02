@@ -3,17 +3,8 @@ package 二叉树;
 利用递归的方式实现二叉树的前序、中序和后序遍历
  */
 
+import 二叉树.Node;
 public class Recursive_pre_in_posOrder {
-    //二叉树的数据结构
-    public class Node {
-        public int value;
-        public Node left;  //左子树
-        public Node right; //右子树
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     //前序遍历：根，左，右
     public void perOrderRecur(Node head) {

@@ -2,16 +2,9 @@ package 二叉树;
 
 import java.util.*;
 
-public class InitBinaryTree {
-    public static class Node {
-        public int value;
-        public Node left;  //左子树
-        public Node right; //右子树
+import 二叉树.Node;
 
-        public Node(int data) {
-            this.value = data;
-        }
-    }
+public class InitBinaryTree {
 
     public static void main(String[] args) {
         Node node1 = new Node(1);
@@ -29,58 +22,32 @@ public class InitBinaryTree {
         node3.right = node7;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
-        f.printTreeByZigzag(node1);
+        System.out.print(f.isSBT_UnRecur(node1));
 
     }
 
     //  测试代码***************************************************
-    public void printTreeByZigzag(Node head) {
-        if (head == null) {
-            return;
-        }
-        Deque<Node> dq = new LinkedList<>();
-        boolean lr = true;    //true:从左到右   false：从右到左
-        int level = 1;
-        Node last = head;
-        Node nLast = null;
-        dq.offerFirst(head);
-        print(level++, lr);
-        while (!dq.isEmpty()) {
-            if (lr) {
-                head = dq.pollFirst();
-                if (head.left != null) {
-                    nLast = nLast == null ? head.left : nLast;
-                    dq.offerLast(head.left);
-                }
-                if (head.right != null) {
-                    nLast = nLast == null ? head.right : nLast;
-                    dq.offerLast(head.right);
-                }
-            } else {
-                head = dq.pollLast();
-                if (head.right != null) {
-                    nLast = nLast == null ? head.right : nLast;
-                    dq.offerFirst(head.right);
-                }
-                if (head.left != null) {
-                    nLast = nLast == null ? head.left : nLast;
-                    dq.offerFirst(head.left);
+    public boolean isSBT_UnRecur(Node head) {
+        if (head != null) {
+            int last = Integer.MIN_VALUE;
+            Stack<Node> stack = new Stack<>();
+            Node cur = head;
+            while (!stack.isEmpty() || cur != null) {
+                if (cur != null) {
+                    stack.push(cur);
+                    cur = cur.left;
+                } else {
+                    cur = stack.pop();
+                    if (cur.value <= last) {
+                        return false;
+                    }
+                    last = cur.value;
+                    cur = cur.right;
                 }
             }
-            System.out.print(head.value + " ");
-            if (head == last && !dq.isEmpty()) {
-                lr = !lr;
-                last = nLast;
-                nLast = null;
-                System.out.println();
-                print(level++, lr);
-            }
+            return true;
         }
-    }
-
-    public void print(int level, boolean lr) {
-        System.out.print("level " + level + " from ");
-        System.out.print(lr ? "left to right: " : "right to left: ");
+        return true;
     }
     //*************************************************************
 }
