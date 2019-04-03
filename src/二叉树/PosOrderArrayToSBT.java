@@ -3,8 +3,7 @@ package 二叉树;
  把一个搜索二叉树后序遍历的结果数组，还原为搜索二叉树
  */
 
-import 二叉树.PrintTreeByLevel;
-import 二叉树.Node;
+
 
 public class PosOrderArrayToSBT {
 

@@ -2,8 +2,6 @@ package 二叉树;
 
 import java.util.*;
 
-import 二叉树.Node;
-
 public class InitBinaryTree {
 
     public static void main(String[] args) {
@@ -25,50 +23,39 @@ public class InitBinaryTree {
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
 
-        Record1 r = new Record1(node1);
-        System.out.print(r.query(node1, node6, node8).value);
+        System.out.print(f.getMaxDistance(node1));
 
     }
 
     //  测试代码***************************************************
-    public static class Record1 {
-        private HashMap<Node, Node> map;
+    //建立递归函数返回的类型
+    public class ReturnType {
+        public int height;
+        public int maxDist;
 
-        public Record1(Node head) {
-            map = new HashMap<>();
-            if (head != null) {
-                map.put(head, null);
-            }
-            setMap(head);
+        public ReturnType(int height, int maxDist) {
+            this.height = height;
+            this.maxDist = maxDist;
         }
+    }
 
-        private void setMap(Node head) {   //递归建立哈希表
-            if (head == null) {
-                return;
-            }
-            if (head.left != null) {
-                map.put(head.left, head);
-            }
-            if (head.right != null) {
-                map.put(head.right, head);
-            }
-            setMap(head.left);
-            setMap(head.right);
+    //递归函数(后序遍历)
+    public ReturnType process(Node head) {
+        if (head == null) {
+            return new ReturnType(0, 0);
         }
+        ReturnType leftData = process(head.left);
+        ReturnType rightData = process(head.right);
 
-        public Node query(Node head, Node o1, Node o2) {
-            HashSet<Node> path = new HashSet<>();
-            while (map.containsKey(o1)) {
-                path.add(o1);         //找到包含o1在内的所有父节点
-                o1 = map.get(o1);
-            }
-            while (!path.contains(o2)) { //判断o2的父节点是不是和o1的父节点重叠
-                o2 = map.get(o2);
-            }
-            return o2;
-        }
+        int height = Math.max(leftData.height, rightData.height) + 1;
+        int maxDist = Math.max(leftData.height + rightData.height + 1,
+                Math.max(leftData.maxDist, rightData.maxDist));
 
+        return new ReturnType(height, maxDist);
+    }
 
+    public int getMaxDistance(Node head) {
+        return process(head).maxDist;
     }
     //*************************************************************
 }

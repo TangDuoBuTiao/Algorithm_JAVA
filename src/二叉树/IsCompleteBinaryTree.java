@@ -9,7 +9,6 @@ package 二叉树;
 import java.util.Queue;
 import java.util.LinkedList;
 
-import 二叉树.Node;
 
 public class IsCompleteBinaryTree {
 

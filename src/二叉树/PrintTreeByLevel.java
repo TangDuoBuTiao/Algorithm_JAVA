@@ -6,7 +6,6 @@ package 二叉树;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import 二叉树.Node;
 
 public class PrintTreeByLevel {
 

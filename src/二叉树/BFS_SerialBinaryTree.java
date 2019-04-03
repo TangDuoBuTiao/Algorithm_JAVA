@@ -7,15 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS_SerialBinaryTree {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     //序列化二叉树为字符串,使用队列，
     public String serialByBFS(Node head) {

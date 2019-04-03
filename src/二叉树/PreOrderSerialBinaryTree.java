@@ -7,15 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class PreOrderSerialBinaryTree {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     // 前序遍历序列化二叉树为字符串
     public String serialBypre(Node head) {

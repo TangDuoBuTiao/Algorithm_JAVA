@@ -7,15 +7,6 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class PrintTreeByZigzag {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     public void printTreeByZigzag(Node head) {
         if (head == null) {

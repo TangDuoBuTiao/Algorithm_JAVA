@@ -6,15 +6,6 @@ package 二叉树;
 import java.util.HashMap;
 
 public class GetMaxLength {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     public int getMaxLength(Node head, int sum) {   //sun为指定的值
         HashMap<Integer, Integer> sumMap = new HashMap<>();

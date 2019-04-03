@@ -3,7 +3,7 @@ package 二叉树;
 利用递归的方式实现二叉树的前序、中序和后序遍历
  */
 
-import 二叉树.Node;
+
 public class Recursive_pre_in_posOrder {
 
     //前序遍历：根，左，右

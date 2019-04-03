@@ -4,8 +4,6 @@ package 二叉树;
 解法：使用递归的方式，先找到中间的数当根节点，左右两边的子数组继续使用这种方法，直到 (start > end)
  */
 
-import 二叉树.Node;
-import 二叉树.PrintTreeByLevel;
 
 public class SortArrToBalancedSBT {
     public Node sortArrToBSBT(int[] sortArr) {

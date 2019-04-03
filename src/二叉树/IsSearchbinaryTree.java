@@ -4,7 +4,6 @@ package 二叉树;
 解法：中序遍历这颗树，如果是【**递增**】的，就是搜索二叉树
  */
 
-import 二叉树.Node;
 
 import java.util.Stack;
 

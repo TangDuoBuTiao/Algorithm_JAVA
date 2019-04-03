@@ -6,15 +6,6 @@ package 二叉树;
 import java.util.Stack;
 
 public class UnRecursive_pre_in_posOrder {
-    public class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 
     //非递归的方式前序遍历
     public void preOrderUnRecur(Node head) {
