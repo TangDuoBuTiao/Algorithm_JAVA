@@ -17,9 +17,9 @@ public class InitBinaryTree {
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
-   //     node2.right = node5;
-        node4.left = node6;
-        node4.right = node7;
+        node2.right = node5;
+        node3.left = node6;
+        node3.right = node7;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
         System.out.print(f.isCBT(node1));
