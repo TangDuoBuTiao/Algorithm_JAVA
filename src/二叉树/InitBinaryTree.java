@@ -19,43 +19,41 @@ public class InitBinaryTree {
         node2.right = node5;
         node3.left = node6;
         node3.right = node7;
-        node7.left = node8;
+        //  node7.left = node8;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
 
-        System.out.print(f.getMaxDistance(node1));
+        System.out.print(f.countNodeNumOfCBT(node1));
 
     }
 
     //  测试代码***************************************************
-    //建立递归函数返回的类型
-    public class ReturnType {
-        public int height;
-        public int maxDist;
-
-        public ReturnType(int height, int maxDist) {
-            this.height = height;
-            this.maxDist = maxDist;
-        }
-    }
-
-    //递归函数(后序遍历)
-    public ReturnType process(Node head) {
+    //主函数
+    public int countNodeNumOfCBT(Node head) {
         if (head == null) {
-            return new ReturnType(0, 0);
+            return 0;
         }
-        ReturnType leftData = process(head.left);
-        ReturnType rightData = process(head.right);
-
-        int height = Math.max(leftData.height, rightData.height) + 1;
-        int maxDist = Math.max(leftData.height + rightData.height + 1,
-                Math.max(leftData.maxDist, rightData.maxDist));
-
-        return new ReturnType(height, maxDist);
+        return bs(head, 1, mostLeftLevel(head, 1));
     }
 
-    public int getMaxDistance(Node head) {
-        return process(head).maxDist;
+    //递归函数
+    public int bs(Node node, int level, int h) {
+        if (level == h) {
+            return 1;
+        }
+        if (mostLeftLevel(node.right, level + 1) == h) {  //说明当前节点的左子树是满二叉树，
+            return ((1 << (h - level)) + bs(node.right, level + 1, h));
+        } else {                                //当前节点的右子树是满的
+            return ((1 << (h - level - 1)) + bs(node.left, level + 1, h));
+        }
+    }
+
+    public int mostLeftLevel(Node head, int level) {
+        while (head != null) {
+            level++;
+            head = head.left;
+        }
+        return level - 1;
     }
     //*************************************************************
 }
