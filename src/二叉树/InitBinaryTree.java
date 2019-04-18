@@ -23,37 +23,24 @@ public class InitBinaryTree {
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
 
-        System.out.print(f.countNodeNumOfCBT(node1));
+        inOrder(node1);
 
     }
 
     //  测试代码***************************************************
-    //主函数
-    public int countNodeNumOfCBT(Node head) {
-        if (head == null) {
-            return 0;
+    public static void inOrder(Node head) {
+        if (head != null) {
+            Stack<Node> stack = new Stack<>();
+            while (!stack.isEmpty() || head != null) {
+                while (head != null) {
+                    stack.push(head);
+                    head = head.left;
+                }
+                head = stack.pop();
+                System.out.print(head.value + " ");
+                head = head.right;
+            }
         }
-        return bs(head, 1, mostLeftLevel(head, 1));
-    }
-
-    //递归函数
-    public int bs(Node node, int level, int h) {
-        if (level == h) {
-            return 1;
-        }
-        if (mostLeftLevel(node.right, level + 1) == h) {  //说明当前节点的左子树是满二叉树，
-            return ((1 << (h - level)) + bs(node.right, level + 1, h));
-        } else {                                //当前节点的右子树是满的
-            return ((1 << (h - level - 1)) + bs(node.left, level + 1, h));
-        }
-    }
-
-    public int mostLeftLevel(Node head, int level) {
-        while (head != null) {
-            level++;
-            head = head.left;
-        }
-        return level - 1;
     }
     //*************************************************************
 }
