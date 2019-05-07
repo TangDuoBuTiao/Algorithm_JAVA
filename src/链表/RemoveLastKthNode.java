@@ -10,6 +10,7 @@ package 链表;
 
 //单向链表
 public class RemoveLastKthNode {
+
     //定义链表节点数据结构
     public class Node {
         public int value;

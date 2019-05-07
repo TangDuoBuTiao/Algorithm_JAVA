@@ -51,22 +51,27 @@ public class InitializeLinkedList {
 
         printLinkedList(node1);
         //printLinkedList(nodeA);
-        printLinkedList(removeLastKthNode(node1, 2));
+        printLinkedList(removeLastKthNode(node1, 5));
     }
 
     // ***********************************************************测试代码放这里
 
-    public static Node removeLastKthNode(Node head, int k) {
-        Node cur = head;
-        while (cur != null) {
-            k--;
-            cur = cur.next;
+    public static Node removeLastKthNode(Node head, int n) {
+        Node curf = head;
+        Node curs = head;
+        while(n != 0 && curf != null){
+            curf = curf.next;
+            n--;
         }
-        cur = head;
-        while (k++ != 0) {
-            cur = cur.next;
+        while(curf != null && curf.next != null){
+            curf = curf.next;
+            curs = curs.next;
         }
-        return cur;
+        if(curs == head){
+            return head.next;
+        }
+        curs.next = curs.next.next;
+        return head;
     }
 //******************************************************************测试代码
 }

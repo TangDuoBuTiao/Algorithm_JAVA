@@ -13,7 +13,7 @@ import java.util.Arrays;
  *    13 14 15 16
  */
 public class Rotate {
-    public void rotate(int[][] matrix) {  //R:row, C:colum
+    public int[][] rotate(int[][] matrix) {  //R:row, C:colum
         int tR = 0;
         int tC = 0;
         int dR = matrix.length - 1;
@@ -21,31 +21,33 @@ public class Rotate {
         while (tR < dR) {
             rotateEdge(matrix, tR++, tC++, dR--, dC--);
         }
+        return matrix;
     }
 
     public void rotateEdge(int[][] m, int tR, int tC, int dR, int dC) {
         int times = dR - tR;  //总的组数
         int tmp = 0;
         for (int i = 0; i != times; i++) { //每一轮循环就是一组的占据
-            tmp = m[tR][tC + i];   //左上角给tmp
-            m[tR][tC + i] = m[dR - i][tC];   //右上角给左上角
-            m[dR - i][tC] = m[dR][dC - i];   //右下角给右上角
-            m[dR][dC - i] = m[tR + i][dC];
-            m[tR + i][dC] = tmp;
+            tmp = m[tR][tC + i];             //左上角给tmp
+            m[tR][tC + i] = m[dR - i][tC];   //左下角给左上角
+            m[dR - i][tC] = m[dR][dC - i];   //右下角给左下角
+            m[dR][dC - i] = m[tR + i][dC];   //右上角给右下角
+            m[tR + i][dC] = tmp;             //tmp给右上角
         }
-        //打印看转换结果
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[i].length; j++) {
-                System.out.print(m[i][j] + " ");
-            }
-            System.out.println();
-        }
+
     }
 
     public static void main(String[] args) {
         int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         Rotate r = new Rotate();
-        r.rotate(matrix);
+        int [][] res = r.rotate(matrix);
+        //打印看转换结果
+        for (int i = 0; i < res.length; i++) {
+            for (int j = 0; j < res[i].length; j++) {
+                System.out.printf("%4d",res[i][j]);
+            }
+            System.out.println();
+        }
     }
 
 }
