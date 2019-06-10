@@ -2,6 +2,8 @@ package 二叉树;
 
 import java.util.*;
 
+import 二叉树.PrintTreeByLevel;
+
 public class InitBinaryTree {
 
     public static void main(String[] args) {
@@ -18,29 +20,23 @@ public class InitBinaryTree {
         node2.left = node4;
         node2.right = node5;
         node3.left = node6;
-        node3.right = node7;
+       // node3.right = node7;
         //  node7.left = node8;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
 
-        inOrder(node1);
-
+        System.out.println(TreeDepth(node1));
     }
 
     //  测试代码***************************************************
-    public static void inOrder(Node head) {
-        if (head != null) {
-            Stack<Node> stack = new Stack<>();
-            while (!stack.isEmpty() || head != null) {
-                while (head != null) {
-                    stack.push(head);
-                    head = head.left;
-                }
-                head = stack.pop();
-                System.out.print(head.value + " ");
-                head = head.right;
-            }
+    public static int TreeDepth(Node root) {
+        if (root == null) {
+            return 0;
         }
+        int left = TreeDepth(root.left);
+        int right = TreeDepth(root.right);
+
+        return left > right ? left + 1 : right + 1;
     }
     //*************************************************************
 }

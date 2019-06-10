@@ -54,25 +54,25 @@ public class GetIntersectNode {
         int n = 0;
         Node cur1 = head1;
         Node cur2 = head2;
-        while (cur1.next != null) {
+        while (cur1.next != null) {   //统计链表1的长度len1
             cur1 = cur1.next;
             n++;
         }
-        while (cur2.next != null) {
+        while (cur2.next != null) {  //统计链表2的长度len2
             cur2 = cur2.next;
             n--;
         }
-        if (cur1 != cur2) {
+        if (cur1 != cur2) {  //如果两个链表的最后一个节点不同，则不相交
             return null;
         }
         cur1 = n > 0 ? head1 : head2;          //保证cur1指向较长链表的开始
         cur2 = cur1 == head1 ? head2 : head1;  //而cur2指向较短链表
         n = Math.abs(n);
-        while (n != 0) {
+        while (n != 0) {     //让cur1先走len1-len2步
             n--;
             cur1 = cur1.next;
         }
-        while (cur1 != cur2) {
+        while (cur1 != cur2) {   //两个链表一起走，
             cur1 = cur1.next;
             cur2 = cur2.next;
         }
