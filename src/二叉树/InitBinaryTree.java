@@ -20,23 +20,48 @@ public class InitBinaryTree {
         node2.left = node4;
         node2.right = node5;
         node3.left = node6;
-       // node3.right = node7;
-        //  node7.left = node8;
+        node3.right = node7;
+      //  node7.left = node8;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        res = f.print(node1);
 
-        System.out.println(TreeDepth(node1));
+        for(int i = 0; i < res.size(); i++){
+            System.out.println(res.get(i));
+        }
     }
 
     //  测试代码***************************************************
-    public static int TreeDepth(Node root) {
-        if (root == null) {
-            return 0;
+    public ArrayList<ArrayList<Integer>> print(Node pRoot) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        if (pRoot == null) {
+            return res;
         }
-        int left = TreeDepth(root.left);
-        int right = TreeDepth(root.right);
-
-        return left > right ? left + 1 : right + 1;
+        Node last = pRoot;
+        Node nLast = null;
+        Queue<Node> queue = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        queue.offer(pRoot);
+        while (!queue.isEmpty()) {
+            pRoot = queue.poll();
+            if (pRoot.left != null) {
+                queue.offer(pRoot.left);
+            }
+            if (pRoot.right != null) {
+                nLast = pRoot.right;
+                queue.offer(pRoot.right);
+            }
+            list.add(pRoot.value);
+            if (pRoot == last && !queue.isEmpty()) {
+                last = nLast;
+                nLast = null;
+                res.add(new ArrayList(list));
+                list.clear();
+            }
+        }
+        res.add(new ArrayList(list));
+        return res;
     }
     //*************************************************************
 }
