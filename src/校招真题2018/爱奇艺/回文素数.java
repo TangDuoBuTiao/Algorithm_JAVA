@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
   问题描述：
         如果一个整数只能被1和自己整除,就称这个数是素数。
@@ -11,7 +11,7 @@ package 校招真题2018;
 
 import java.util.Scanner;
 
-public class 爱奇艺_回文素数 {
+public class 回文素数 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

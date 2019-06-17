@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 问题描述：
  *        牛牛有一个长度为n的整数序列,牛牛想对这个序列进行重排为一个非严格升序序列。牛牛比较懒惰,
@@ -15,7 +15,7 @@ package 校招真题2018;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class 爱奇艺_排序 {
+public class 排序 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int len = sc.nextInt();

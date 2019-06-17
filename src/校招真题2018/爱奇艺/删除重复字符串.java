@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 问题描述：对于同一个字母,他只想保留第一次出现并删除掉后面出现的字母。请帮助牛牛完成对s的操作。
  * 输入：输入包括一个字符串s,s的长度length(1 ≤ length ≤ 1000),s中的每个字符都是小写的英文字母('a' - 'z')
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class 爱奇艺_删除重复字符串 {
+public class 删除重复字符串 {
 
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

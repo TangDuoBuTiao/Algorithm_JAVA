@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 问题描述：
  * 牛牛又从生物科研工作者那里获得一个任务,这次牛牛需要帮助科研工作者从DNA序列s中找出最短没有出现在DNA序列s中的DNA片段的长度。
@@ -13,7 +13,7 @@ package 校招真题2018;
 import java.util.Scanner;
 import java.util.HashSet;
 
-public class 爱奇艺_DNA序列 {
+public class DNA序列 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.next();

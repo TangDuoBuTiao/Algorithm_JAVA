@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
   问题描述：给4个数，可以对每个数进行加1减1操作，问可以对每个数一共进行多少操作可以4个数相等
   输入：输入包括一行,四个整数a,b,c,d(1 ≤ a,b,c,d ≤ 10^6), 以空格分割
@@ -10,7 +10,7 @@ package 校招真题2018;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class 爱奇艺_拼凑正方形 {
+public class 拼凑正方形 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

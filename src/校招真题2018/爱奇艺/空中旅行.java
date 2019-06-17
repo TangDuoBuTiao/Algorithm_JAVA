@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 问题描述：牛牛有羊羊有了属于他们自己的飞机。于是他们进行几次连续的飞行。
  *         f[i]表示第i次飞行所需的燃油的升数。飞行只能按照f数组所描述的顺序进行。
@@ -15,7 +15,7 @@ package 校招真题2018;
 
 import java.util.Scanner;
 
-public class 爱奇艺_空中旅行 {
+public class 空中旅行 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

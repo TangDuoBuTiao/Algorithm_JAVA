@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 问题描述：有一种有趣的字符串价值计算方式:统计字符串中每种字符出现的次数,然后求所有字符次数的平方和作为字符串的价值
            例如: 字符串"abacaba",里面包括4个'a',2个'b',1个'c',于是这个字符串的价值为4 * 4 + 2 * 2 + 1 * 1 = 21
@@ -14,7 +14,7 @@ package 校招真题2018;
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class 爱奇艺_字符串价值 {
+public class 字符串价值 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

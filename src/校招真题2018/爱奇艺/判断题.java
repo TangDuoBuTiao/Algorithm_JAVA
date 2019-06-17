@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 题目描述：牛牛参加了一场考试,考试包括n道判断题,每做对一道题获得1分,牛牛考试前完全没有准备,所以考试只能看缘分了,
  * 牛牛在考试中一共猜测了t道题目的答案是"正确",其他的牛牛猜为"错误"。
@@ -12,7 +12,7 @@ package 校招真题2018;
 
 import java.util.Scanner;
 
-public class 爱奇艺_判断题 {
+public class 判断题 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

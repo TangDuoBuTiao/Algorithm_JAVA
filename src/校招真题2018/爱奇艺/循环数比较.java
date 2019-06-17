@@ -1,4 +1,4 @@
-package 校招真题2018;
+package 校招真题2018.爱奇艺;
 /*
  * 题目描述：对于任意两个正整数x和k,我们定义repeat(x, k)为将x重复写k次形成的数,
  *          例如repeat(1234, 3) = 123412341234,repeat(20,2) = 2020.
@@ -11,7 +11,7 @@ package 校招真题2018;
 
 import java.util.Scanner;
 
-public class 爱奇艺_循环数比较 {
+public class 循环数比较 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
