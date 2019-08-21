@@ -2,8 +2,6 @@ package 二叉树;
 
 import java.util.*;
 
-import 二叉树.PrintTreeByLevel;
-
 public class InitBinaryTree {
 
     public static void main(String[] args) {
@@ -11,7 +9,7 @@ public class InitBinaryTree {
         Node node2 = new Node(2);
         Node node3 = new Node(3);
         Node node4 = new Node(4);
-        Node node5 = new Node(5);
+        Node node5 = new Node(19);
         Node node6 = new Node(6);
         Node node7 = new Node(7);
         Node node8 = new Node(8);
@@ -21,47 +19,20 @@ public class InitBinaryTree {
         node2.right = node5;
         node3.left = node6;
         node3.right = node7;
-      //  node7.left = node8;
+        node7.left = node8;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        res = f.print(node1);
-
-        for(int i = 0; i < res.size(); i++){
-            System.out.println(res.get(i));
-        }
+        int a = f.max(node1);
+        System.out.println(a);
     }
 
     //  测试代码***************************************************
-    public ArrayList<ArrayList<Integer>> print(Node pRoot) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        if (pRoot == null) {
-            return res;
+    public static int max(Node root){
+        if(root == null){
+            return 0;
         }
-        Node last = pRoot;
-        Node nLast = null;
-        Queue<Node> queue = new LinkedList<>();
-        ArrayList<Integer> list = new ArrayList<>();
-        queue.offer(pRoot);
-        while (!queue.isEmpty()) {
-            pRoot = queue.poll();
-            if (pRoot.left != null) {
-                queue.offer(pRoot.left);
-            }
-            if (pRoot.right != null) {
-                nLast = pRoot.right;
-                queue.offer(pRoot.right);
-            }
-            list.add(pRoot.value);
-            if (pRoot == last && !queue.isEmpty()) {
-                last = nLast;
-                nLast = null;
-                res.add(new ArrayList(list));
-                list.clear();
-            }
-        }
-        res.add(new ArrayList(list));
-        return res;
+        return Math.max(max(root.left) + root.value, max(root.right) + root.value);
     }
     //*************************************************************
 }

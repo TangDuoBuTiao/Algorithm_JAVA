@@ -29,7 +29,7 @@ public class SortArrToBalancedSBT {
         SortArrToBalancedSBT f = new SortArrToBalancedSBT();
         Node ans = f.sortArrToBSBT(a);
 
-        PrintTreeByLevel p = new PrintTreeByLevel();
+        按层打印二叉树 p = new 按层打印二叉树();
         p.printTreeByLevel(ans);
     }
 
