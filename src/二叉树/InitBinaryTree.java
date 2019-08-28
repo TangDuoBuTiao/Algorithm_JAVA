@@ -1,5 +1,7 @@
 package 二叉树;
 
+import 玩转算法面试.链表.num445_两数相加2;
+
 import java.util.*;
 
 public class InitBinaryTree {
@@ -9,7 +11,7 @@ public class InitBinaryTree {
         Node node2 = new Node(2);
         Node node3 = new Node(3);
         Node node4 = new Node(4);
-        Node node5 = new Node(19);
+        Node node5 = new Node(5);
         Node node6 = new Node(6);
         Node node7 = new Node(7);
         Node node8 = new Node(8);
@@ -23,16 +25,40 @@ public class InitBinaryTree {
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        int a = f.max(node1);
-        System.out.println(a);
+        List<List<Integer>> a = f.binaryTreePaths(node1);
+        for (int i = 0; i < a.size(); i++) {
+            System.out.println(a.get(i));
+        }
+
     }
 
     //  测试代码***************************************************
-    public static int max(Node root){
-        if(root == null){
-            return 0;
+    public  List<List<Integer>> binaryTreePaths(Node root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
         }
-        return Math.max(max(root.left) + root.value, max(root.right) + root.value);
+
+        //叶子节点
+        if (root.left == null && root.right == null) {
+            res.add(new ArrayList<>(root.value));
+            return res;
+        }
+
+        List<List<Integer>> lefts = binaryTreePaths(root.left);
+        for (int i = 0; i < lefts.size(); i++) {
+            List<Integer> list = new ArrayList<>(lefts.get(i));
+            list.add(0, root.value);
+            res.add(list);
+        }
+
+        List<List<Integer>> rights = binaryTreePaths(root.right);
+        for (int i = 0; i < rights.size(); i++) {
+            List<Integer> list = new ArrayList<>(rights.get(i));
+            list.add(0, root.value);
+            res.add(list);
+        }
+        return res;
     }
     //*************************************************************
 }

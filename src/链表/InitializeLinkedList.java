@@ -39,80 +39,99 @@ public class InitializeLinkedList {
         node4.next = node5;
        // node5.next = node6;
 
-        Node nodeA = new Node(2);
-        Node nodeB = new Node(4);
-        Node nodeC = new Node(6);
-        Node nodeD = new Node(8);
+        Node nodeA = new Node(1);
+        Node nodeB = new Node(1);
+        Node nodeC = new Node(2);
+        Node nodeD = new Node(1);
         Node nodeE = new Node(10);
         nodeA.next = nodeB;
         nodeB.next = nodeC;
         nodeC.next = nodeD;
-        nodeD.next = nodeE;
+       // nodeD.next = nodeE;
 
-        printLinkedList(node1);
-        printLinkedList(oddEvenList(node1));
+        printLinkedList(nodeA);
+        System.out.println((isPalindrome(nodeA)));
         //printLinkedList(removeLastKthNode(node1, 5));
         //printLinkedList(reorderList(node1));
     }
 
     // ***********************************************************测试代码放这里
-    public static Node oddEvenList(Node head) {
-        if (head == null || head.next == null) {
-            return head;
+    public static boolean isPalindrome(Node head) {
+        if(head == null || head.next == null){
+            return true;
         }
-
-        Node odd = head;
-        Node curOdd = odd;
-        Node even = odd.next;
-        Node curEven = even;
-        while (curOdd.next != null && curEven.next != null) {
-            curOdd.next = curEven.next;
-            curOdd = curEven.next;
-            curEven.next = curOdd.next;
-            curEven = curOdd.next;
-        }
-        curOdd.next = even;  //奇数的最后一个连接偶数的第一个
-        return head;
-    }
-
-
-    public static Node reorderList(Node head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        //找到中间节点为slow
-        Node fast = head;
         Node slow = head;
-        while (fast != null && fast.next != null) {
+        Node fast = head;
+        while(fast != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
         }
-        Node node = head;
-        while(node.next != slow){
-            node = node.next;
+
+        Node cur = slow;
+        Node head2 = reverse(cur);
+        cur.next = null;
+        while(head2 != null){
+            if(head.value != head2.value){
+                return false;
+            }
+            head = head.next;
+            head2 = head2.next;
         }
-        node.next = null;
-        Node cur1 = head;
-        Node cur2 = reverse(slow);
+        return true;
+    }
+
+    public static Node rotateRight(Node head, int k) {
+        Node dummyHead = new Node(0);
+        dummyHead.next = head;
+        //计算链表长度
+        Node c = head;
+        int len = 0;
+        while(c != null){
+            len++;
+            c = c.next;
+        }
+        Node pre = dummyHead;
+        Node cur = head;
+        while(k % len != 0){
+            while(cur.next != null){
+                cur = cur.next;
+                pre = pre.next;
+            }
+            pre.next = null;
+            cur.next = head;
+            head = cur;
+            pre = dummyHead;
+            //dummyHead.next = head;
+            k--;
+        }
+
+        return head;
+    }
+    public static Node mergeTwoLists(Node l1, Node l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
         Node pHead = new Node(0);
-        Node next1 = null;
-        Node next2 = null;
-        pHead.next = cur1;
-        while (cur1 != null && cur2 != null) {
-            //保存下一个节点
-            next1 = cur1.next;
-            next2 = cur2.next;
-            //指向
-            cur1.next = cur2;
-            cur2.next = next1;
-            //后移
-            cur1 = next1;
-            cur2 = next2;
-
+        Node cur = pHead;
+        while (l1 != null && l2 != null) {
+            if (l1.value <= l2.value) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
         }
-
+        if(l1 != null){
+            cur.next = l1;
+        }
+        if(l2 != null){
+            cur.next = l2;
+        }
         return pHead.next;
     }
+
 
     //翻转单链表
     public static Node reverse(Node head) {
