@@ -25,6 +25,6 @@ public class n中1出现的次数 {
     }
 
     public static void main(String[] args) {
-        System.out.println(NumberOf1Between1AndN_Solution(10));
+        System.out.println(NumberOf1Between1AndN_Solution(13));
     }
 }

@@ -26,11 +26,7 @@ public class num347_前k个高频元素 {
         }
         List<Integer> res = new ArrayList<>();
         //默认是小根堆，要用大根堆
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
-            public int compare(Integer a, Integer b) {
-                return map.get(a) - map.get(b);
-            }
-        });
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1,o2)->(map.get(o1) - map.get(o2)));
         for (int key : map.keySet()) {
             if (pq.size() < k) {
                 pq.offer(key);
@@ -47,7 +43,7 @@ public class num347_前k个高频元素 {
     }
 
     public static void main(String[] args) {
-        int[] a = {4, 1, -1, 2, -1, 2, 3};
+        int[] a = {-1, -1, -1, 1, 1, 2, 3};
         topKFrequent(a, 2);
     }
 }

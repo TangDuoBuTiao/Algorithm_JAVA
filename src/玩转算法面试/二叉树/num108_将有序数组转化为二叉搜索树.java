@@ -22,7 +22,7 @@ public class num108_将有序数组转化为二叉搜索树 {
         if (l > r) {
             return null;
         }
-        if (l == r) {
+        if (l == r) {  //说明是叶子节点，直接返回这个节点
             return new TreeNode(nums[l]);
         }
         int mid = (l + r) / 2;

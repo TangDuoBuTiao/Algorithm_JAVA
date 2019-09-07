@@ -5,7 +5,7 @@ package leetcode;
  * 反转后溢出就返回0
  */
 
-public class num7 {
+public class num7_翻转整数 {
     public static int reverse(int x) {
         long ans = 0;
         while (x != 0) {
@@ -19,6 +19,7 @@ public class num7 {
     }
 
     public static void main(String[] args) {
-        System.out.println(reverse(15342));
+
+        System.out.println(reverse(-15342));
     }
 }

@@ -21,42 +21,34 @@ public class InitBinaryTree {
         node2.right = node5;
         node3.left = node6;
         node3.right = node7;
-        node7.left = node8;
+       // node7.left = node8;
         InitBinaryTree f = new InitBinaryTree();
         String str = "1!2!4!#!#!5!#!#!3!6!#!#!7!#!#!";   //二叉树序列化结果
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        List<List<Integer>> a = f.binaryTreePaths(node1);
-        for (int i = 0; i < a.size(); i++) {
-            System.out.println(a.get(i));
-        }
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        List<String> a = f.bianryTreePaths(node1);
+        System.out.println(a);
 
     }
 
     //  测试代码***************************************************
-    public  List<List<Integer>> binaryTreePaths(Node root) {
-        List<List<Integer>> res = new ArrayList<>();
+    public static List<String> bianryTreePaths(Node root) {
+        List<String> res = new ArrayList<>();
         if (root == null) {
             return res;
         }
-
-        //叶子节点
         if (root.left == null && root.right == null) {
-            res.add(new ArrayList<>(root.value));
+            res.add(String.valueOf(root.value));
             return res;
         }
 
-        List<List<Integer>> lefts = binaryTreePaths(root.left);
+        List<String> lefts = bianryTreePaths(root.left);
         for (int i = 0; i < lefts.size(); i++) {
-            List<Integer> list = new ArrayList<>(lefts.get(i));
-            list.add(0, root.value);
-            res.add(list);
+            res.add(root.value + "->" + lefts.get(i));
         }
 
-        List<List<Integer>> rights = binaryTreePaths(root.right);
+        List<String> rights = bianryTreePaths(root.right);
         for (int i = 0; i < rights.size(); i++) {
-            List<Integer> list = new ArrayList<>(rights.get(i));
-            list.add(0, root.value);
-            res.add(list);
+            res.add(root.value + "->" + rights.get(i));
         }
         return res;
     }

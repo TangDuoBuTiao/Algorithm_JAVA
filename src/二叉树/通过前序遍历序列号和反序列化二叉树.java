@@ -24,7 +24,7 @@ public class 通过前序遍历序列号和反序列化二叉树 {
         //先把字符串转换为字符串数组
         String[] values = prestr.split("!");
         Queue<String> queue = new LinkedList<>();
-        for (int i = 0; 1 != values.length; i++) {
+        for (int i = 0; i != values.length; i++) {
             queue.offer(values[i]);
         }
         return reconPreOrder(queue);
