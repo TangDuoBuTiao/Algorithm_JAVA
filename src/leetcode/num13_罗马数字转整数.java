@@ -17,7 +17,7 @@ package leetcode;
 
 import java.util.HashMap;
 
-public class num13 {
+public class num13_罗马数字转整数 {
     public static int romanToInt(String s) {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>() {{
             put('I', 1);

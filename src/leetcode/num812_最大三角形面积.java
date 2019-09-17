@@ -3,7 +3,7 @@ package leetcode;
  * 《最大三角形面积》
  */
 
-public class num812 {
+public class num812_最大三角形面积 {
     public static double largestTriangleArea(int[][] points) {
         int len = points.length;
         double s = 0;

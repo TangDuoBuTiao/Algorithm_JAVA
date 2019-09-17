@@ -5,7 +5,7 @@ package leetcode;
 
 import java.util.HashMap;
 
-public class num981 {
+public class num981_基于时间的键值存储 {
     HashMap<HashMap<String, Integer>, String> map1 = new HashMap<>();
     HashMap<String, Integer> map2 = new HashMap<>();
 
@@ -31,7 +31,7 @@ public class num981 {
     }
 
     public static void main(String[] args) {
-        num981 n = new num981();
+        num981_基于时间的键值存储 n = new num981_基于时间的键值存储();
         n.set("love", "high", 10);
         n.set("love", "low", 20);
         System.out.println(n.get("love",5));

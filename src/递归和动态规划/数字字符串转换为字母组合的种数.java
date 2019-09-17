@@ -24,7 +24,7 @@ public class 数字字符串转换为字母组合的种数 {
                 cur = 0;
             } else {
                 tmp = cur;
-                if (chs[i] - '0' * 10 + chs[i + 1] - '0' < 27) {  //存在相邻组合转换的可能性
+                if ((chs[i] - '0') * 10 + chs[i + 1] - '0' < 27) {  //存在相邻组合转换的可能性
                     cur += next;
                     System.out.printf("%-4d", cur);
                 }
@@ -35,7 +35,7 @@ public class 数字字符串转换为字母组合的种数 {
     }
 
     public static void main(String[] args) {
-        String str = "111123";
+        String str = "226";
         System.out.println("\n转换种数: " + num(str));
     }
 }

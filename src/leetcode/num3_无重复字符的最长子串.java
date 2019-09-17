@@ -6,6 +6,8 @@ package leetcode;
      解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
  */
 
+import java.util.HashMap;
+
 public class num3_无重复字符的最长子串 {
 
     public static int lengthOfLongestSubstring(String s) {
@@ -26,9 +28,34 @@ public class num3_无重复字符的最长子串 {
         return max;
     }
 
+    public static int lengthOfLongestSubstring2(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        char[] c = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
+        int[] dp = new int[c.length];
+        dp[0] = 1;
+        map.put(c[0], 1);
+        for (int i = 1; i < c.length; i++) {
+            if(!map.containsKey(c[i])){
+                map.put(c[i], 1);
+                dp[i] = dp[i - 1] + 1;
+            }else{
+                map.clear();
+                dp[i] = 1;
+            }
+        }
+        int res = 0;
+        for(int i = 0; i < dp.length; i++){
+            res = Math.max(res, dp[i]);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
-        String s = "a";
-        System.out.println(lengthOfLongestSubstring(s));
+        String s = "abcabcbb";
+        System.out.println(lengthOfLongestSubstring2(s));
     }
 
 }

@@ -2,7 +2,7 @@ package leetcode;
 /*
  * 《数字转换为十六进制数》
  */
-public class num405 {
+public class num405_数字转为十六进制 {
     public static String toHex(int num) {
         String ans = "";
         if (num > 0) {

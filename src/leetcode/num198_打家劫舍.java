@@ -4,7 +4,6 @@ package leetcode;
  * 思路：动态规划，建立dp[],dp[i]=max(num[i]+dp[i-2], dp[i-1])
  */
 
-import sun.misc.FloatingDecimal;
 
 public class num198_打家劫舍 {
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package 玩转算法面试.动态规划;
 
+import java.util.Arrays;
+
 public class num343_整数拆分 {
     public static int integerBreak(int n) {
         int[] dp = new int[n + 1];
@@ -14,14 +16,12 @@ public class num343_整数拆分 {
                 dp[i] = Math.max(dp[i], j * dp[i - j]);
             }
         }
+        System.out.println(Arrays.toString(dp));
         return dp[n];
     }
 
-    public static int max3(int a, int b, int c) {
-        return Math.max(a, Math.max(b, c));
-    }
-
     public static void main(String[] args) {
-        System.out.println(integerBreak(5));
+
+        System.out.println(integerBreak(8));
     }
 }

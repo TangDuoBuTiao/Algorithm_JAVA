@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class num12 {
+public class num12_整数转罗马数字 {
     public static String intToRoman(int num) {
         Map<Integer, String> map = new LinkedHashMap<Integer, String>() {{
             put(1000, "M");

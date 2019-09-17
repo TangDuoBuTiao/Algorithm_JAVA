@@ -3,7 +3,7 @@ package leetcode;
 /*
  * 链表的中间节点
  */
-public class num876 {
+public class num876_链表的中间节点 {
     public class ListNode {
         int val;
         ListNode next;

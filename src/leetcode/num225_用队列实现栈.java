@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class num225 {
+public class num225_用队列实现栈 {
     //用两个队列实现栈
     Queue<Integer> q1 = new LinkedList<>();  //LinkedList类实现了Queue
     Queue<Integer> q2 = new LinkedList<>();

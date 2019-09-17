@@ -6,7 +6,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class num677 {
+public class num677_键值映射 {
     Map<String, Integer> map = new HashMap<>();
 
     public void insert(String key, int val) {

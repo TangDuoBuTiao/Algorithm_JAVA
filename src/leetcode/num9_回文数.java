@@ -7,7 +7,7 @@ package leetcode;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class num9 {
+public class num9_回文数 {
     public static boolean isPalindrome(int x) {
         if (x < 0) {
             return false;

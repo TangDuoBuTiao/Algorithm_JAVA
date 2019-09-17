@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 
-public class num811 {
+public class num811_子域名访问计数 {
     public static List<String> subdomainVisits(String[] cpdomains) {
         int num;
         String str;
