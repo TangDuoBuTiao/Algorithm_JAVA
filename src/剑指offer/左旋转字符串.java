@@ -9,6 +9,7 @@ public class 左旋转字符串 {
     }
 
     public static void main(String[] args) {
+
         System.out.println(LeftRotateString("abcqweasd", 3));
     }
 }

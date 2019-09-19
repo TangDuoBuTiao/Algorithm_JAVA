@@ -25,13 +25,13 @@ public class num347_前k个高频元素 {
             }
         }
         List<Integer> res = new ArrayList<>();
-        //默认是小根堆，要用大根堆
-        PriorityQueue<Integer> pq = new PriorityQueue<>((o1,o2)->(map.get(o1) - map.get(o2)));
+        //默认是小根堆，就用小根堆，但是入队的是元素，需要排序的是元素是频次，所以重写比较方法
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1, o2) -> (map.get(o1) - map.get(o2)));
         for (int key : map.keySet()) {
-            if (pq.size() < k) {
+            if (pq.size() < k) {   //先把前k个元素加进去
                 pq.offer(key);
-            } else if (map.get(key) > map.get(pq.peek())) {
-                pq.poll();
+            } else if (map.get(key) > map.get(pq.peek())) {  //只要比队头元素大，就入队
+                pq.poll();  //队首元素出队
                 pq.offer(key);
             }
         }

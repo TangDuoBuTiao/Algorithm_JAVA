@@ -1,4 +1,5 @@
 package leetcode;
+//找出数组中，元素个数超过数组长度一半的元素
 
 public class num169_求众数 {
     public static int majorityElement(int[] nums) {

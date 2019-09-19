@@ -9,7 +9,7 @@ public class num240_搜索矩阵2 {
         }
         int row = matrix.length;
         int col = matrix[0].length;
-        int i = row - 1;
+        int i = row - 1;   //从左下角开始找
         int j = 0;
         while (i >= 0 && j < col) {
             if (matrix[i][j] == target) {

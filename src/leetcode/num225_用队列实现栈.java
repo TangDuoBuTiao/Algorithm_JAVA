@@ -1,9 +1,12 @@
 package leetcode;
 /*
  * 《用队列实现栈》
+ * 思路总结：
+ *  任何时候两个队列总有一个是空的。
+ *  添加元素总是向非空队列中 add 元素。
+ *  取出元素的时候总是将元素除队尾最后一个元素外，导入另一空队列中，最后一个元素出队。
  */
 
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 

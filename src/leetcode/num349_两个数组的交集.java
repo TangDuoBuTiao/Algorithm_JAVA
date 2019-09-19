@@ -6,7 +6,6 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class num349_两个数组的交集 {
     public static int[] intersection(int[] nums1, int[] nums2) {
